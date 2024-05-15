@@ -1,4 +1,5 @@
 import 'package:festival_post/utils/festival_data.dart';
+import 'package:festival_post/utils/user_details.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -7,10 +8,92 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const Drawer(),
+      drawer: Drawer(
+        child: Column(
+          children: [
+            const SizedBox(height: 80),
+            CircleAvatar(
+              radius: 50,
+              backgroundImage: FileImage(UserDetailssss.imagePR),
+            ),
+            const SizedBox(height: 20),
+            const Text(
+              "Good Morning",
+              style: TextStyle(
+                fontSize: 18,
+              ),
+            ),
+            Text(
+              "Mr. ${UserDetailssss.name}",
+              style: const TextStyle(
+                fontSize: 18,
+              ),
+            ),
+            const SizedBox(height: 10),
+            const Divider(),
+            const SizedBox(height: 10),
+            Container(
+              height: MediaQuery.of(context).size.height / 1.6,
+              padding: const EdgeInsets.symmetric(horizontal: 30),
+              alignment: Alignment.centerLeft,
+              child: const Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Edit Profile",
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
+                      ),
+                      Icon(Icons.edit),
+                    ],
+                  ),
+                  SizedBox(height: 20),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Setting",
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
+                      ),
+                      Icon(Icons.settings),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 30.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Log-out",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.red,
+                    ),
+                  ),
+                  Icon(
+                    Icons.logout,
+                    color: Colors.red,
+                  ),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
       appBar: AppBar(
         backgroundColor: const Color(0xFF339F74),
-        title: const Text("Festival Post"),
+        title: const Text(
+          "Festival Post",
+          style: TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
       ),
       backgroundColor: const Color(0xFF339F74),
@@ -43,7 +126,6 @@ class HomePage extends StatelessWidget {
                       ),
                       borderRadius: BorderRadius.circular(12),
                     ),
-                    height: MediaQuery.of(context).size.height / 3.6,
                     width: MediaQuery.of(context).size.width,
                     alignment: Alignment.center,
                     child: Padding(
@@ -58,27 +140,28 @@ class HomePage extends StatelessWidget {
                               Text(
                                 "${Festivals.festivals[index]['name']}",
                                 style: const TextStyle(
-                                  fontSize: 22,
+                                  fontSize: 20,
                                   color: Colors.white,
                                 ),
                               ),
-                              const SizedBox(height: 10),
+                              const SizedBox(height: 15),
                               Text(
                                 "${Festivals.festivals[index]['description']}",
                                 style: const TextStyle(
-                                  fontSize: 18,
+                                  fontSize: 16,
                                   color: Colors.white,
                                 ),
                               ),
                             ],
                           ),
+                          const SizedBox(height: 15),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
                               Text(
                                 "${Festivals.festivals[index]['date']}",
                                 style: const TextStyle(
-                                  fontSize: 20,
+                                  fontSize: 12,
                                   color: Colors.white,
                                 ),
                               ),

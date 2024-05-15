@@ -10,7 +10,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:share_extend/share_extend.dart';
 
 class DetailPage extends StatefulWidget {
-  const DetailPage({Key? key}) : super(key: key);
+  const DetailPage({super.key});
 
   @override
   State<DetailPage> createState() => _DetailPageState();
@@ -49,7 +49,19 @@ class _DetailPageState extends State<DetailPage> {
       appBar: AppBar(
         backgroundColor: const Color(0xFF339F74),
         centerTitle: true,
-        title: Text("${Festivals.festivals[data]['name']}"),
+        leading: InkWell(
+          onTap: () {
+            Navigator.of(context).pop();
+          },
+          child: const Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
+        ),
+        title: Text(
+          "${Festivals.festivals[data]['name']}",
+          style: const TextStyle(color: Colors.white),
+        ),
       ),
       body: Stack(
         alignment: Alignment.bottomCenter,
@@ -90,7 +102,7 @@ class _DetailPageState extends State<DetailPage> {
                             Text(
                               "${Festivals.festivals[data]['date']}",
                               style: const TextStyle(
-                                fontSize: 22,
+                                fontSize: 16,
                                 color: Colors.white,
                               ),
                             ),
@@ -100,27 +112,28 @@ class _DetailPageState extends State<DetailPage> {
                         Text(
                           "${Festivals.festivals[data]['description']}",
                           style: const TextStyle(
-                            fontSize: 26,
+                            fontSize: 16,
                             color: Colors.white,
+                            // fontWeight: FontWeight.w400,
                           ),
                         ),
                         const SizedBox(height: 30),
-                        GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              data++;
-                            });
-                          },
-                          child: Container(
-                            height: 60,
-                            alignment: Alignment.centerRight,
-                            child: const Icon(
-                              Icons.arrow_circle_right,
-                              color: Colors.white,
-                              size: 50,
-                            ),
-                          ),
-                        ),
+                        // GestureDetector(
+                        //   onTap: () {
+                        //     setState(() {
+                        //       data++;
+                        //     });
+                        //   },
+                        //   child: Container(
+                        //     height: 60,
+                        //     alignment: Alignment.centerRight,
+                        //     child: const Icon(
+                        //       Icons.arrow_circle_right,
+                        //       color: Colors.white,
+                        //       size: 50,
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),
@@ -130,11 +143,11 @@ class _DetailPageState extends State<DetailPage> {
           ),
           Container(
             height: MediaQuery.of(context).size.height / 4,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.vertical(
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.vertical(
                 top: Radius.circular(20),
               ),
-              color: Colors.white,
+              color: Colors.white.withOpacity(0.2),
             ),
             alignment: Alignment.topCenter,
             child: Column(
